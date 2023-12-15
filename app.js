@@ -1,11 +1,9 @@
 const http =require('http');
+const routes = require('./router');
 
-const server =http.createServer((req,res)=>{
- res.setHeader('Content-Type', 'text/json');
- res.write('<html>');
- res.write('<head><title>Y&I Web dav</title></head>');
- res.write('<body><h1>Hello Y&I web sites</h1></boby>');
- res.end('</html>');
+const server =http.createServer(routes.routes);
+console.log(routes.text);
+
+server.listen(3000, () => {
+    console.log('server listening at 3000 port');
 });
-
-server.listen(3000);
