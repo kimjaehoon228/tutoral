@@ -1,15 +1,7 @@
-const path = require ('path');
 const express = require('express');
 const router = express.Router();
-const rootDir = require('../utils/path');
-const productsData = require('../utils/products');
+const { getHomePage } = require('../controllers/HomeController');
 
-router.get('/',(req,res) => {
-    const viewsData = {
-        products : productsData.products,
-        pageTitle: '홈페이지-상품리스트'
-    };
-    res.render('homepage', viewsData);
-});
+router.get('/', getHomePage);
 
 module.exports = router;
