@@ -13,14 +13,15 @@ app.set('views', 'views');
 
 //Static files
 app.use(express.static(path.join(rootdir,'public')));
-app.use('css',express.static(path.join(rootdir,'node_modules','bootstrap','dist','css')));
+
+app.use('/css', express.static(path.join(rootdir, 'node_modules', 'bootstrap', 'dist', 'css')));
+
 app.use(bodyParser.urlencoded({ extended : false }));
 
 //Routes
-app.use('/users', adminRouters);
+
 app.use(homeRouters);
-
-
+app.use('/products', adminRouters);
 app.use((req,res) => {
     const viewsData = {
         pageTitle: '페이지 오류'
