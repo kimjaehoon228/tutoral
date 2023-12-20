@@ -21,8 +21,10 @@
                                 </h3>
                                 <div>price: <strong>$<%= product.price %></strong></div>
                                 <p><%= product.description %></p>
-                                <div class="my-2 text-center">
-                                    <a href="/product/details/<%= product.id %>" class="btn btn-primary">자세히</a>
+                                <div class="my-2 text-center d-flex justify-content-center">
+                                    <a href="/product/details/<%= product.id %>" 
+                                       class="btn btn-primary mx-2">자세히</a>
+                                       <%- include('includes/CartButton.ejs',{product: product}) %>
                                 </div>
                             </div>
                           </div>
