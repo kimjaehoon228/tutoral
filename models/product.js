@@ -1,7 +1,7 @@
 const fs =require('fs');
 const path = require('path');
 const rootDir = require('../utils/path');
-const { error } = require('console');
+const {deleteProductFromCart} = require('./cart');
 
 const getProductsFromFile = (callBack) => {
     const productsPath = path.join(rootDir, 'data', 'products.json');
@@ -35,16 +35,16 @@ exports.getProductById = (productId,callBack) => {
     });
 };
 
-exports.updateProductByid = (product, productId) => {
+exports.updateProductById = (product, productId) => {
     const productsPath = path.join(rootDir, 'data', 'products.json');
     getProductsFromFile((products) => {
-        const existingProductIndex = products.findIndex(prod => prod.id.toString()==productId);
-        
-        const updateProducts = [...products];
-        updateProducts[existingProductIndex] = product;
-        fs.writeFile(productsPath, JSON.stringify(updateProducts),(error) => {
-            console.log(error);
-        });
+      const existingProductIndex = products.findIndex((prod) => prod.id.toString() === productId);
+  
+      const updatedProducts = [...products];
+      updatedProducts[existingProductIndex] = product;
+      fs.writeFile(productsPath, JSON.stringify(updatedProducts), (error) => {
+        console.log(error);
+      });
     });
 };
 
@@ -52,6 +52,8 @@ exports.deleteProductById = (productId, callBack) => {
     const productsPath = path.join(rootDir, 'data', 'products.json');
     getProductsFromFile((products) => {
       let updatedProducts = products.filter((product) => product.id.toString() !== productId.toString());
+      deleteProductFromCart(productId);
+  
       fs.writeFile(productsPath, JSON.stringify(updatedProducts), (error) => {
         console.log(error);
       });
