@@ -1,4 +1,7 @@
-const { saveProduct, fetchAllProducts, getProductById } = require("../../models/product");
+const { saveProduct,
+     fetchAllProducts, 
+     getProductById, 
+     updateProductByid } = require("../../models/product");
 
 exports.getAddProductPage = (req,res)=>{
     const viewsData ={
@@ -43,4 +46,17 @@ exports.getEditproductPate = (req,res) => {
         };
         res.render('Addproduct',viewsData);
     });
+};
+
+exports.postEditProductPage = (req, res) => {
+    console.log(req.body);
+    const product = {
+        id: req.body.productId,
+        title: req.body.title,
+        price: req.body.price,
+        description: req.body.description,
+        image: req.body.image
+    };
+    updateProductByid(product, req.body.productId);
+    res.redirect('/products');
 };

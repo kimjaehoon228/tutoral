@@ -1,6 +1,7 @@
 const fs =require('fs');
 const path = require('path');
 const rootDir = require('../utils/path');
+const { error } = require('console');
 
 const getProductsFromFile = (callBack) => {
     const productsPath = path.join(rootDir, 'data', 'products.json');
@@ -32,4 +33,17 @@ exports.getProductById = (productId,callBack) => {
         const product = products.find(p => p.id.toString() == productId);
         callBack(product);
     });
-}
+};
+
+exports.updateProductByid = (product, productId) => {
+    const productsPath = path.join(rootDir, 'data', 'products.json');
+    getProductsFromFile((products) => {
+        const existingProductIndex = products.findIndex(prod => prod.id.toString()==productId);
+        
+        const updateProducts = [...products];
+        updateProducts[existingProductIndex] = product;
+        fs.writeFile(productsPath, JSON.stringify(updateProducts),(error) => {
+            console.log(error);
+        });
+    });
+};
