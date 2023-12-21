@@ -1,7 +1,8 @@
 const { saveProduct,
      fetchAllProducts, 
      getProductById, 
-     updateProductByid } = require("../../models/product");
+     updateProductByid,
+     deleteProductById } = require("../../models/product");
 
 exports.getAddProductPage = (req,res)=>{
     const viewsData ={
@@ -35,7 +36,7 @@ exports.getAdminProductsPage = (req,res) => {
 };
 
 
-exports.getEditproductPate = (req,res) => {
+exports.getEditProductPate = (req,res) => {
     const productId = req.params.productId;
 
     getProductById(productId, (product) => {
@@ -60,3 +61,10 @@ exports.postEditProductPage = (req, res) => {
     updateProductByid(product, req.body.productId);
     res.redirect('/products');
 };
+
+exports.postDeleteProductPage = (req, res) => {
+    const productId = req.body.productId;
+    deleteProductById(productId, () => {
+      res.redirect('/products');
+    });
+  };

@@ -1,4 +1,4 @@
-const { fetchAllProducts,getProdutById } = require("../models/product");
+const { fetchAllProducts,getProductById } = require("../models/product");
 
 exports.getHomePage = (req,res)=>{
   fetchAllProducts((products) => {
@@ -13,7 +13,7 @@ exports.getHomePage = (req,res)=>{
 
 exports.getProductDetailsPage = (req,res) => {
   const productId =req.params.productId;
-  getProdutById(productId, product => {
+  getProductById(productId, product => {
     const viewsData ={
       product,
       pageTitle: product.title
