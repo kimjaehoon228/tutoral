@@ -590,14 +590,774 @@ do{
 //for(let i=10; i > 0; i-=1){
 //  console.log(i,"hello");
 //}
-
+/*
 for(let i=1; i <= 20; i++){
   if(i==13){
-    //continue;
-    break;
+    //continue;  //해당제외 계속 
+    break;       //해당 멈춤
   }
   else{
     console.log(i);
   }
 }
+*/
+//NEXT 21. NUMBER GUESSING GAME
+/*
+const minNum=1;
+const maxNum=100;
+const answer= Math.floor(Math.random() * (maxNum -minNum +1)+minNum);
 
+let attempts = 0;
+let guess;
+let running = true;
+
+while(running){
+  guess = window.prompt(`Guess a number between ${minNum}-${maxNum}`);
+
+  if(isNaN(guess)){
+    window.alert("Please enter a valid number");
+  }
+  else if(guess < minNum || guess > maxNum ){
+    window.alert("Please enter a valid number");
+  }
+  else{
+    attempts++;
+    if(guess < answer){
+      window.alert("Too LOW! TRY AGAIN");55
+    }
+    else if(guess > answer){
+      window.alert("TOO HIGH! TRY AGAIN");
+    }
+    else{
+      window.alert(`CORRECT! The answer was ${answer}. It took you ${attempts} attempts`);
+      running=false;
+    }
+  }
+}
+*/
+//NEXT22 .function = A section of reusable code.
+//                   Declare code once,use it whenever you want.
+//                   Call the function to execute that code,.
+/*
+function happyBirthday(username,age){
+  console.log("Happy birthdu to tou!");
+  console.log("Happy birthdu to tou!");
+  console.log(`Happy birthdu dear ${username}`);
+  console.log(`You are ${age} years old`);
+}
+happyBirthday("jihoo",14);
+happyBirthday("spongebob",30);
+
+function add(x, y){
+  let result = x + y;
+  return result;
+}
+console.log(add(2,3));
+let answer = add(2,3);
+console.log(answer);
+
+function subtract( x, y){
+  return x - y;
+}
+function multiply(x, y){
+  return x * screenY;
+}
+function divide(x,y){
+  return x / y;
+}
+
+console.log(divide(2,3));
+
+function isEven(number){
+  return number % 2 === 0 ? true : false;
+  //if(number % 2 === 0){
+  //  return true;
+ // }
+ // else{
+  //  return false;
+ // }
+}
+console.log(isEven(66));
+console.log(isValidEmail("Bor@akasfd.dkf"));
+function isValidEmail(email){
+  return email.includes("@") ? true : false;
+  //if(email.includes("@")){
+  //  return true;
+  //}
+  //else{
+  //  retrun false;
+  //}
+}
+*/
+
+//NEXT 23.Variable scope = where a varialbe is recognized
+//                         and accessible (local vs global)
+/*
+let y = 3;             //global scope
+function1();
+function2();
+function function1(){
+  let x =1;                       //local scope
+  console.log(x);
+  console.log(y);
+}
+function function2(){
+  let x=2;
+  console.log(x);
+}
+*/
+/*
+const textBox = document.getElementById("textBox");
+const toFahrenheit = document.getElementById("toFahrenheit");
+const toCelsius = document.getElementById("toCelsius");
+const result =document.getElementById("result");
+let temp;
+
+function convert(){
+  if(toFahrenheit.checked){
+    temp =Number(textBox.value);
+    temp = temp * 9/5 + 32;
+    result.textContent=temp.toFixed(1) +"°F"
+  }
+  else if(toCelsius.checked){
+    temp =Number(textBox.value);
+    temp = (temp -32) * (9/5);
+    result.textContent=temp.toFixed(1) +"°C"
+  }
+  else{
+    result.textContent="Select a unit"
+  }
+}
+*/
+//NEXT 25. arrays = a variable like structure that can hold
+//                 more than 1 value
+/*
+let fruits = ["apple","orange","banana"];
+
+fruits.push("coconut");  //삽입
+fruits.pop();         //제거
+fruits.unshift("mango");    //앞에서 삽입
+fruits.shift();              //앞에서 제거
+//fruits[3] = "coconut"   //
+let numOfFruits = fruits.length       //배열 길이
+let index =fruits.indexOf("orange");       // 해당 인덱스  -1(없음)
+console.log(numOfFruits);           //3
+console.log(index);                 //1
+console.log(fruits[0]);      //apple
+console.log(fruits[1]);        
+console.log(fruits[2]);
+console.log(fruits[3]);   //undifined
+
+fruits.sort();  //문자 정렬
+fruits.sort().reverse;  //문자 정렬.반대로
+//for(let i=0;i<fruits.length;i++){   //오름차순
+  for(let i=fruits.length;i>=0;i--){  //내림차순
+  console.log(i,fruits[i]);
+}
+for(let fruit of fruits){
+  console.log(fruit);
+}
+*/
+//NEXT26 spread operator = ...allows an iterable such as an
+//                         array or string to be expanded
+//                         into seperate elements
+//                         (unpacks the elements)
+/*
+let numbers = [1,2,3,4,5];
+let maximum=Math.max(numbers);   //NAN
+let maximum1=Math.max(...numbers);  //5
+let minimum=Math.min(...numbers);
+console.log(numbers,maximum1,minimum)
+
+let username="Kim jaehoon"
+let letters = [...username]; //(11) ['K', 'i', 'm', ' ', 'j', 'a', 'e', 'h', 'o', 'o', 'n']
+let lettersjoin = [...username].join("-");  //'K-i-m- -j-a-e-h-o-o-n'
+console.log(letters,lettersjoin);
+
+let fruits = ["apple","orange","banana"];
+let vegetabel = ["carrots","celery","potatoes"];
+let foods = [...fruits, ...vegetabel,"eggs","milk"];
+console.log(foods);  //['apple', 'orange', 'banana', 'carrots', 'celery', 'potatoes']
+*/
+//NEXT 27.Rest parameters
+//rest parameters = (...rest) allow a function work with a variable
+//                  number of arguments by bundling them into an array
+//                  spread = expands an arriay into seperate elements
+//                  rest = bundles seperate elements into an array
+
+/*
+const food1 = "pizza";
+const food2 = "hamburger";
+const food3 = "hotdog";
+const food4 = "sushi";
+const food5 = "ramen";
+*/
+//function openFridge(...foods){
+//  console.log(foods);
+//}
+//openFridge(food1,food2,food3,food4,food5);
+/*
+function getFood(...foods){
+  return foods;
+}
+const foods = getFood(food1,food2,food3,food4,food5);
+console.log(foods);
+
+function sum(...numbers){
+  let result = 0;
+  for (let number of numbers){
+    result += number;
+  }
+  return result;
+}
+
+function getAverage(...numbers){
+
+  let result = 0;
+  for (let number of numbers){
+    result += number;
+  }
+  return result / numbers.length;
+}
+console.log(sum(5,3,4,3,2,34,4,3))
+const total = getAverage(75,100,85,90,50);
+console.log(total);
+
+function combineStrings(...strings){
+  return strings.join(" ");
+}
+const fullName = combineStrings("Mr.","Spongebob","squarepants","III");
+console.log(fullName);
+*/
+//NEXT 28. Dice Roller program
+/*
+function rollDice(){
+  const numOfDice = document.getElementById("numOfDice").value;
+  const diceResult = document.getElementById("diceResult");
+  const diceImages = document.getElementById("diceImages");
+  const values = [];
+  const images = [];
+
+  for(let i = 0; i<numOfDice; i++){
+    const value = Math.floor(Math.random() * 6) +1;
+    values.push(value);
+    images.push(`<img src="images/${value}.png" alt="Dice ${value}">`);
+  }
+
+  diceResult.textContent =`dice: ${values.join(`,`)}`;
+  diceImages.innerHTML = images.join('');
+}
+*/
+
+//NEXT 29.random password generatro
+/*
+function generatePassword(length,
+                          includeLowercase,
+                           includeUppercase, 
+                           includeNumbers,
+                           includeSymbols){
+    const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+    const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWZYZ";
+    const numberChars = "0123456789";
+    const symbolChars = "!@#$%^&*()_+-=";
+
+    allowedChars = "";
+    let password ="";
+
+    allowedChars += includeLowercase ? lowercaseChars : "";
+    allowedChars += includeUppercase ? uppercaseChars : "";
+    allowedChars += includeNumbers ? numberChars : "";
+    allowedChars += includeSymbols ? symbolChars : "";
+    
+    if(length <= 0){
+      return `(password length must be at least 1)`
+    }
+    if(allowedChars.length === 0){
+      return `(At least 1 set of character need to be selected)`;
+    }
+for(let i=0; i<length; i++){
+  const randomIndex = Math.floor(Math.random()*allowedChars.length)
+  password += allowedChars[randomIndex];
+}
+   
+    console.log(allowedChars); 
+    return password;
+}
+
+const passwordLength =6;
+const includeLowercas = true;
+const includeUppercase = true;
+const includeNumbers = true;
+const includeSymbols = false;
+
+password = generatePassword(passwordLength,
+                            includeLowercas,
+                            includeUppercase,
+                            includeNumbers,
+                            includeSymbols);
+console.log(`Generated password: ${password}`);
+*/
+//NEXT30. callback = a function that is passed as an argrument
+//                   to another function.
+//                   used to handle asynchronous operations.
+//                   1.reading a file
+//                   2.Network requests
+//                   3.Interacting with databases
+
+//                   "Hey, when you're done, call this next."
+/*
+hello(wait,leave,goodbye);
+function hello(callback,callback2,call){
+console.log("Hello");
+callback();
+callback2();
+call();
+}
+function wait(){
+  console.log("Wait!");
+}
+function leave(){
+  console.log("Leave!");
+}
+function goodbye(){
+  console.log("Goodbye!")
+}
+
+sum(displayConsole, 2, 5);
+function sum(callback, x, y){
+  let result = x + y;
+  callback(result)
+}
+function displayConsole(result){
+  console.log(result);
+}
+function displayPage(result){
+  document.getElementById("myH1").textContent = result;
+}
+sum(displayPage,6,5);
+*/
+//NEXT 31. forEach() = method used to iterate over elements
+//                     of an array and apply a specified function(callback)
+//                     to each element
+//                     array.forEach(callback)
+//                     element, index, array are provided
+/*
+let numbers = [1,2,3,4,5];
+numbers.forEach(cube);
+numbers.forEach(display);
+function display(element,index,array){
+  console.log(element,index,array);
+}
+
+function double(element,index,array){
+  array[index] = element * 2;
+}
+function triple(element,index,array){
+  array[index] = element * 3;
+}
+function square(element,index,array){
+  array[index] = Math.pow(element, 2);
+}
+function cube(element,index,array){
+  array[index] = Math.pow(element, 3);
+}
+
+let fruits = ["apple","orange","BANANA","COCONUT"];
+fruits.forEach(capitalize);
+fruits.forEach(display);
+function display(callback){
+  console.log(callback);
+}
+function upperCase(element,index,array){
+  array[index] = element.toUpperCase();
+}
+function lowerCase(element,index,array){
+  array[index] = element.toLowerCase();
+}
+function capitalize(element,index,array){
+  array[index] = element.charAt(0).toUpperCase()+element.slice(1);
+}
+*/
+//NEXT. 32  .map()= accepts a callback and applies that function
+//          to each element of an array, then return a new array
+/*
+let numbers = [1,2,3,4,5];
+const squares = numbers.map(square);
+const cubes = numbers.map(cube);
+function square(element){
+  return Math.pow(element, 2)
+}
+function cube(element){
+  return Math.pow(element,3);
+}
+console.log(numbers);
+console.log(cubes);
+console.log(squares);
+displayPage(cubes,squares);
+displayPage(squares);
+function displayPage(a){
+  document.getElementById("myH1").textContent = a;
+}
+
+let students = ["Spongebob","Patrick","Squidward","Sandy"];
+const studentsUpper = students.map(upperCase);
+const studentsLower = students.map(lowerCase);
+function upperCase(element){
+  return element.toUpperCase(element);
+}
+function lowerCase(element){
+  return element.toLowerCase(element);
+}
+
+console.log(studentsUpper,studentsLower);
+
+const dates = ["2024-1-10","2025-2-20","2026-3--30"];
+const formattedDates = dates.map(formatDates);
+console.log(formattedDates);
+function formatDates(element){
+  const parts = element.split("-");
+  console.log(parts);
+  return `${parts[2]}/${parts[1]}/${parts[0]}`;
+}
+*/
+//NEXT33. filter() = creates a new array by filtering
+//                   out elements
+/*
+let numbers = [1,2,3,4,5,6,7];
+let evenNums = numbers.filter(isEven);
+let evenoddNums = numbers.filter(isOdd);
+console.log(evenNums,evenoddNums);
+function isEven(element){
+  return element % 2 === 0;
+}
+function isOdd(element){
+  return element % 2 !== 0;
+}
+
+let ages = [16,17,18,18,19,20,60];
+const adults = ages.filter(isAdult);
+const children = ages.filter(isChild);
+console.log(adults,children)
+function isAdult(element){
+  return element >= 18;
+}
+function isChild(element){
+  return element < 18;
+}
+
+let words =["apple","orange","banana","kiwi","pomegranate","coconut"];
+const shortWords = words.filter(getShortWords);
+const lognWords = words.filter(getLongWords);
+console.log(shortWords,lognWords);
+function getShortWords(element){
+  return element.length <= 6;
+}
+function getLongWords(element){
+  return element.length > 6;
+}
+*/
+//NEXT 34.reduce() = reduce the elements of an array to a single valus
+/*
+const prices = [5,30,10,25,15,20];
+const total = prices.reduce(sum);
+console.log(`$${total.toFixed(2)}`);
+function sum(accumulator, element){
+  return accumulator+element;
+}
+const grades = [75,50,90,80,65,95];
+const maximum = grades.reduce(getMax);
+const minimum = grades.reduce(getMin);
+console.log(maximum,minimum);
+function getMax(accumulator, element){
+  return Math.max(accumulator, element);
+}
+function getMin(accumulator, element){
+  return Math.min(accumulator, element);
+}
+*/
+//NEXT 35. function declaration = define a reusable block of code
+//                                that performs a specific task
+/*
+function hello(){
+  console.log("Hello")
+}
+const numbers =[1,2,3,4,5,6];
+const squares = numbers.map(square);
+console.log(squares);
+function square(element){
+  return Math.pow(element, 2);
+}
+*/
+//function expressions = a way to define functions as values or variables
+//1. Callbacks in asunchronous operations
+//2. Higher-Order Functions
+//3. Closures
+//4. Event Listeners
+/*
+setTimeout(function(){
+  console.log("ekdslafj");
+}, 3000);
+const numbers =[1,2,3,4,5,6];
+const squares = numbers.map(function (element){
+  return Math.pow(element, 2);
+});
+const cubes = numbers.map(function(element){
+  return Math.pow(element,3);
+})
+const evenNums = numbers.filter(function(element){
+  return element % 2 === 0;
+})
+const oddNums = numbers.filter(function(element){
+  return element % 2 !== 0;
+})
+const total = numbers.reduce(function(accumulator,element){
+  return accumulator + element;
+})
+console.log(squares,cubes,evenNums,total);
+*/
+// NEXT36. Arrow functions = a concise way to write function expressions
+//                           good for simple functoons that you use only ones
+//                           (parameters) => some code
+/*
+function hello(){
+  console.log("Hello");
+}
+const hello = function(){
+  console.log("hello");
+}
+*/
+/*
+const hello = (name,age) => {console.log(`hello ${name}`);
+                         console.log(`you are ${age} years old`)}
+hello("ddd",32);
+*/
+/*
+setTimeout(hello,3000);
+function hello(){
+  console.log("Hello");
+}
+setTimeout(() => {
+  console.log("hello")
+}, 3000);
+*/
+/*
+const numbers = [1,2,3,4,5,6];
+const squares = numbers.map((element) => Math.pow(element,2));
+const cubes = numbers.map((elemnet) => Math.pow(elemnet, 3));
+const evenNums = numbers.filter((element) => element % 2 ===0);
+const oddNums = numbers.filter((element) => element % 2 !==0);
+const total = numbers.reduce((accumulator,element) => accumulator+element );
+console.log(squares,cubes,evenNums,oddNums,total)
+*/
+//NEXT 37. objest = A collecton of related properties and/ or methods
+//                 Can represent real wordl objects(people,products,places)
+//                object ={ key: value, function()}
+/*
+const person1 = {
+  firstName: "Spongebob",
+  lastName: "Squarepants",
+  age:30,
+  isEmployed: true,
+  sayHello: function(){console.log("Hi! I am spongebob!")},
+  saybye: function(){console.log("Goodbye!")}
+};
+const person2 = {
+  firstName: "Patrick",
+  lastName: "Star",
+  age:42,
+  isEmployed: false,
+  sayHello: ()=>console.log("Hi! I am spongebob!"),
+  saybye: function(){console.log("Goodbye!")}
+};
+
+console.log(person1.firstName);
+console.log(person1.lastName);
+console.log(person1.age);
+console.log(person1.isEmployed);
+person1.sayHello();
+person1.saybye();
+console.log(person2.firstName);
+console.log(person2.lastName);
+console.log(person2.age);
+console.log(person2.isEmployed);
+person2.sayHello();
+person2.saybye();
+*/
+//NEXT 38 THIS  this = reference to the object where THIS is used
+//                     (the object depends on the immediate context)
+//                     person.name = this.name
+/*
+const person1 = {
+  name: "Spongebob",
+  favFood: "hamburgers",
+  sayHello: function(){console.log(`Hi! I am ${this.name}`)},
+  eat: function(){console.log(`${this.name} is eating ${this.favFood}`)}
+}
+const person2 = {
+  name: "Patrick",
+  favFood: "pizza",
+ // sayHello: function(){console.log(`Hi! I am ${person2.name}`,this)},
+//  eat: function(){console.log(`${this.name} is eating ${person2.favFood}`)}
+sayHello: ()=>{console.log(`Hi! I am ${person2.name}`,this)},  //this winodws
+eat:  ()=>{console.log(`${this.name} is eating ${person2.favFood}`)} 
+}
+person1.sayHello();
+person1.eat();
+
+person2.sayHello();
+person2.eat();
+console.log(this)  //Window
+*/
+//NEXT 39.Constructors = special method for defining the
+//                       properties and methods of objects
+/*
+const car1 ={
+  make: "Ford",
+  model: "Mustang",
+  year: 2024,
+  color: "red",
+  drive: function(){console.log(`You drive the ${this.model}`)}
+}
+
+const car2 ={
+  make: "chevrolet",
+  model: "Camaro",
+  year: 2025,
+  color: "blue",
+  drive: function(){console.log(`You drive the ${this.model}`)}
+}
+const car3 ={
+  make: "Dodge",
+  model: "Charger",
+  year: 2026,
+  color: "silver",
+  drive: function(){console.log(`You drive the ${this.model}`)}
+}
+*/
+/*
+function Car(make,model,year,color){
+  this.make =make,
+  this.model = model,
+  this.year = year,
+  this.color = color
+  this.drive = function(){console.log(`you drive the ${this.model}`)}
+}
+const car1 = new Car("Ford", "Mustang",2024,"red");
+const car2 = new Car("chevrolet", "Camaro",2025,"blue");
+const car3 = new Car("Dodge", "Charger",2026,"silver");
+console.log(car1.make);
+console.log(car1.model);
+console.log(car1.year);
+console.log(car1.color);
+console.log(car2.make);
+console.log(car2.model);
+console.log(car2.year);
+console.log(car2.color);
+console.log(car3.make);
+console.log(car3.model);
+console.log(car3.year);
+console.log(car3.color);
+car1.drive();
+car2.drive();
+car3.drive();
+*/
+//NEXT 40.class = (ES6 feature) provides a more structured and cleaner way to
+//               work with objects compared to traditional constructro functions
+//              ex. static keyword, encapsulation, inheritance
+/*
+function Product(name, price){
+  this.name =name;
+  this.price = price;
+
+  this.displayProduct = function(){
+    console.log(`Product: ${this.name}`);
+    console.log(`{Price: $${this.price.toFixed(2)}}`);
+  };
+  this.calculateTotal = function(salesTax){
+    return this.price + (this.price * salesTax);
+  }
+}
+const salesTax = 0.05;
+
+const product1 = new Product("Shirt",19.99);
+const product2 = new Product("pants",22.50);
+const product3 = new Product("Underwear",100.00);
+
+product1.displayProduct();
+
+const totalPrice = product1.calculateTotal(salesTax);
+console.log(`Total Price (with tax): $${totalPrice.toFixed(2)}`);
+*/
+/*
+class Product{
+  constructor(name,price){
+    this.name = name;
+    this.price = price;
+  }
+  displayProduct(){
+    console.log(`Product:${this.name}`);
+    console.log(`{Price: $${this.price.toFixed(2)}}`);
+  }
+  calculateTotal(salesTax){
+    return this.price + (this.price * salesTax);
+  }
+}
+const salesTax = 0.05;
+
+const product1 = new Product("Shirt",19.99);
+const product2 = new Product("pants",22.50);
+const product3 = new Product("Underwear",100.00);
+
+const totalPrice = product3.calculateTotal(salesTax);
+console.log(`Total Price (with tax): $${totalPrice.toFixed(2)}`);
+*/
+//NEXT 41.STATIC keyword
+//      static = keyword that defines properties or methods that belong
+//               to a class itself rather than the objects created
+//               from that class (class owns anything static, not the objects)
+
+class MathUtil{
+  static PI = 3.14159;
+
+  static getDiameter(radius){
+    return radius *2;
+  }
+  static getCircumference(radius){
+    return this.PI * radius;
+  }
+  static getArea(radius){
+    return this.PI * radius * radius;
+  }
+}
+
+console.log(MathUtil.PI);
+console.log(MathUtil.getDiameter(10));
+console.log(MathUtil.getCircumference(10));
+console.log(MathUtil.getArea(10));
+
+class User{
+  static userCount = 0;
+
+  constructor(username){
+    this.username = username;
+    User.userCount++;
+  }
+  static getUserCount(){
+    console.log(`There are ${User.userCount} users online`);
+  }
+  sayHello(){
+    console.log(`Hello, my username is ${this.username}`);
+  }
+}
+
+const user1 = new User("Spongebob");
+const user2 = new User("Patrick");
+const user3 = new User("Sandy");
+console.log(user1.username);
+console.log(user2.username);
+console.log(user3.username);
+console.log(User.userCount);
+user1.sayHello();
+user2.sayHello();
+user3.sayHello();
+User.getUserCount();
