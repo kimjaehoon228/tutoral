@@ -1316,6 +1316,7 @@ console.log(`Total Price (with tax): $${totalPrice.toFixed(2)}`);
 //               to a class itself rather than the objects created
 //               from that class (class owns anything static, not the objects)
 
+/*
 class MathUtil{
   static PI = 3.14159;
 
@@ -1361,3 +1362,567 @@ user1.sayHello();
 user2.sayHello();
 user3.sayHello();
 User.getUserCount();
+*/
+//NEXT 42. inheritance = allows a new class to inherit properties and methods
+//                       from an existing class (parent -> child)
+//                       helps with code reusablility.
+/*
+class Animal{
+  alive = true;
+
+  eat(){
+    console.log(`This ${this.name} is eating`);
+  }
+  sleep(){
+    console.log(`This ${this.name} is sleeping`);
+  }
+}
+class Robbit extends Animal{
+  name = "rabbit";
+  run(){
+    console.log(`This ${this.name} is runing`);
+}
+}
+class Fish extends Animal{
+  name ="fish";
+  swim(){
+    console.log(`This ${this.name} is swimnin`);
+}
+}
+class Hawk extends Animal{
+  name = "Hawk";
+  fly(){
+    console.log(`This ${this.name} is flying`);
+}
+}
+const rabbit = new Robbit();
+const fish = new Fish();
+const hawk = new Hawk();
+
+console.log(rabbit.alive);
+console.log(rabbit);
+console.log(fish.alive);
+console.log(fish.name);
+rabbit.eat();
+fish.eat();
+hawk.eat();
+rabbit.run();
+fish.swim();
+hawk.fly();
+*/
+//NEXT 43.   super = keyword is used in classed to call the constructor or
+//                   access the properties and methods of a of a parent (superclass)
+//                   this = this object
+//                   super = the parent
+/*
+class Animal{
+  constructor(name,age){
+    this.name = name;
+    this.age = age;
+  }
+  move(speed){
+    console.log(`The ${this.name} moves at a speed of ${speed}mph`);
+  }
+}
+  class Robbit extends Animal{
+    constructor(name,age,runSpeed){
+      //this.name = name;
+      //this.age = age;   
+      super(name,age);
+
+      this.runSpeed = runSpeed;
+    }
+    run(){
+      console.log(`This ${this.name} can run`);
+      super.move(this.runSpeed);
+    }
+  }
+
+class Fish extends Animal{
+  constructor(name,age,swimSpeed){
+    super(name,age);
+    this.swimSpeed = swimSpeed;
+  }
+  swim(){
+    console.log(`This ${this.name} can swim`);
+    super.move(this.swimSpeed);
+  }
+}
+
+class Hawk extends Animal{
+  constructor(name,age,flySpeed){
+    super(name,age);
+    this.flySpeed = flySpeed;
+  }
+  fly(){
+    console.log(`This ${this.name} can fly`);
+    super.move(this.flySpeed);
+  }
+}
+
+const rabbit = new Robbit("rabbit",1,25);
+const fish = new Fish("fish",2,12);
+const hawk = new Hawk("hawk",3,50);
+
+console.log(rabbit.name);
+console.log(fish.age);
+console.log(hawk.runSpeed);
+rabbit.run();
+*/
+//NEXT 44 getter = special method that makes a property readable
+//        setter = special method that makes a property writeable
+//        validate and modify a value when reaing/writing a property
+/*
+class Rectangle{
+  constructor(width, height){
+    this.width = width;
+    this.height = height;
+  }
+  set width(newWidth){
+    if (newWidth > 0){
+      this._width = newWidth;
+    }
+    else{
+      console.log("Width must be a positive nember");
+    }
+  }
+  set height(newHeight){
+    if (newHeight > 0){
+      this._height = newHeight;
+    }
+  
+    else{
+      console.log("Height must be a positive nember");
+    }
+  }
+    get width(){
+      return this._width.toFixed(2);
+    }
+    get height(){
+      return this._height;
+    }
+    get area(){
+      return `${(this._width * this._width).toFixed(1)}cm^2`;
+    }
+  }
+
+const rectangle = new Rectangle(3,4);
+rectangle.width = 5;
+rectangle.height = 5;
+console.log(rectangle.width, rectangle.height,rectangle.area);
+*/
+/*
+class Person{
+  constructor(firstName,lastName, age){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+  }
+  set firstName(newFirstName){
+    if (typeof newFirstName === "string" && newFirstName.length > 0){
+      this._firstName = newFirstName;
+    }
+    else{
+      console.error("First name must be a non-empty string");
+    }
+  }
+  set lastName(newLastName){
+    if (typeof newLastName === "string" && newLastName.length > 0){
+      this._lastName = newLastName;
+    }
+    else{
+      console.error("Last name must be a non-empty string");
+    }
+  }
+  set age(newAge){
+    if (typeof newAge === "number" && newAge > 0){
+      this._age = newAge;
+    }
+    else{
+      console.error("age must be a non-empty number");
+    }
+  }
+  get firstName(){
+    return this._firstName;
+  }
+  get lastName(){
+    return this._lastName;
+  }
+  get fullName(){
+    return this._firstName+this._lastName;
+  }
+  get age(){
+    return this._age;
+  }
+}
+const person = new Person("KIM","JAEHOON", 41);
+person.firstName="kim";
+person.lastName="jaehoon";
+console.log(person.firstName);
+console.log(person.lastName);
+console.log(person.fullName);
+console.log(person.age);
+*/
+//NEXT 45. destructuring = extract values from arrays and objects,
+//                         then assing them to variables in a convenient way
+//                         [] = to perform array destructuring
+//                         {} = to perform objsect destructring
+//                         5 examples
+//example1. Swap the value of two variables
+/*
+let a = 1;
+let b = 2;
+[a,b] = [b,a];
+console.log(a,b);
+//example2. ELEMENTS IN AN ARRAY
+const colors = ["red","green","blue","black","white"];
+[colors[0],colors[4]]=[colors[4],colors[0]];
+console.log(colors);
+//example3.ASSIGN ARRAY ELEMENTS TO VARIABLES
+const [first, secondColor, thirdColor,...extraColors] = colors;
+console.log(first);
+console.log(secondColor);
+console.log(thirdColor);
+console.log(extraColors);
+/*
+//example4.EXTRACT VALUES FROM OBJECTS
+/*
+const person1 ={
+      firstName:"Spongebob",
+      lastName:"SqurePants",
+      age: 30,
+      job:"Fry Cook"
+}
+const person2 ={
+  firstName:"Patrick",
+  lastName:"Star",
+  age: 34,
+}
+//const {firstName,lastName,age,job} = person1;
+//const {firstName,lastName,age,job="Unemployed"} = person2;
+//console.log(firstName,lastName,age,job);
+*/
+// example5.DESTRUCTURE IN FUNCTION PARAMETERS
+/*
+function displayPerson({firstName,lastName,age,job}){
+  console.log(`name: ${firstName} ${lastName}`);
+  console.log(`age:${age}`);
+  console.log(`job:${job}`);
+}
+
+const person1 ={
+  firstName:"Spongebob",
+  lastName:"SqurePants",
+  age: 30,
+  job:"Fry Cook"
+}
+const person2 ={
+firstName:"Patrick",
+lastName:"Star",
+age: 34,
+}
+displayPerson(person1);
+displayPerson(person2);
+*/
+//NEXT 46. nested objects = Objsets inside of other Objects.
+//                          Allows you to represent more complex data structrues
+//                          Child Object is enclosed by a parent Object
+//                          Person{Address{},ContactInfo{}}
+//                          ShoppingCart{Keyboard{},Mouse{},Monitro{}}
+/*
+const person = {
+  fullName: "Spongebob Squarepants",
+  age: 30,
+  isStudent: true,
+  hobbies: ["karate","jellyfishing","cooking"],
+  address: {
+    street: "123 conch st.",
+    city: "Bikini Bottom",
+    country: "Int. Warer"
+  }
+}
+console.log(person.fullName);
+console.log(person.age);
+console.log(person.isStudent);
+console.log(person.hobbies[0],person.hobbies[2]);
+//console.log(person.address.street,person.address.city,person.address.country);
+for(const property in person.address){
+  console.log(person.address[property]);
+}
+*/
+/*
+class Person{
+  constructor(name,age,...address){
+    this.name = name,
+    this.age = age,
+    this.address = new Address(...address);
+  }
+}
+class Address{
+  constructor(street,city,country){
+    this.street = street,
+    this.city = city,
+    this.country = country
+  }
+}
+const person1 = new Person("mairp",30,"123 conch st.",
+                                      "Bikini BOtton",
+                                      "dled");
+const person2 = new Person("asdf",30,"233 conch st.",
+                                      "dadsf BOtton",
+                                      "adfed");
+const person3 = new Person("mairp",30,"653 conch st.",
+                                      "dfd34 BOtton",
+                                      "efd");
+const {name,age} = person2;
+const address2 = person2.address
+function addressAll(address2){
+  for(const property in address2){
+    console.log(address2[property]);
+  }
+}
+console.log(name,age);
+addressAll(person1.address);
+*/
+//NEXT 47. ARRAYS OF OBJECTS
+/*
+const fruits = [{name: "apple", color:"red", calories: 95},
+                {name: "orange", color:"orange", calories: 45},
+                {name: "banana", color:"yellow", calories: 105},
+                {name: "coconut", color:"white", calories: 159},
+                {name: "grapges", color:"yellow", calories: 37}];
+
+console.log(fruits[4].name);
+fruits.push({ name: "pineapple", color:"purple", calories: 62});
+fruits.pop();
+fruits.splice(3,2);
+console.log(fruits);
+fruits.forEach((fruit,i) => console.log(i,fruit.name,fruit.color,fruit.calories))
+*/
+/*
+//-------------map()---------
+const fruitNames =fruits.map(fruit => fruit.name);
+const fruitColors = fruits.map(fruit => fruit.color);
+const fruitCalories = fruits.map(fruit => fruit.calories);
+
+console.log(fruitNames,fruitColors ,fruitCalories);
+*/
+//------------filter()------------
+/*
+const yellowFruits = fruits.filter(fruit => fruit.color === "yellow");
+const lowCalFruits =  fruits.filter(fruit => fruit.calories < 100);
+
+console.log(yellowFruits,lowCalFruits);
+*/
+//------------reduce()----------------
+/*
+const maxFruit = fruits.reduce((max, fruit) =>
+                              fruit.calories > max.calories ?
+                              fruit : max);
+const minFruit = fruits.reduce((min, fruit) =>
+                              fruit.calories < min.calories ?
+                              fruit : min );
+console.log(maxFruit);
+console.log(minFruit);
+*/
+//NEXT 48. sort() = method used to sort elements of an array in place.
+//                  sorts elements as strings in lexicographic order, not alphabetical
+//                  leicographic = (alphabet + numbers+symbols) as strings
+/*
+//let fruits =["apple","orange","banana","coconut","pineapple"];
+//console.log(fruits);
+//fruits.sort();
+//console.log(fruits);
+let numbers = [1,10,2,9,3,8,4,7,5,6];
+numbers.sort();
+console.log(numbers); // [1, 10, 2, 3, 4, 5, 6, 7, 8, 9]
+numbers.sort((a,b) => a - b);
+console.log(numbers); //  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+numbers.sort((a,b) => b - a);
+console.log(numbers); (10) [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+const people = [{name: "Spongebob", age:30, gpa: 3.0},
+                {name: "Paterick", age:37, gpa: 1.5},
+                {name: "Squidward", age:51, gpa: 2.5},
+                {name: "Sandy", age:27, gpa: 4.0}];
+//people.sort((a,b) => a.age - b.age );
+//people.sort((a,b) => b.age - a.age );
+people.sort((a,b) => a.name.localeCompare(b.name));
+people.sort((a,b) => b.name.localeCompare(a.name));
+console.log(people);
+*/
+//NEXT.48 Sorting
+/*
+const cards = ['A',2,3,4,5,6,7,8,9,10,'J','Q','K'];
+cards.sort(() => Math.random() - 0.5);
+console.log(cards);
+console.log(Math.random()-0.5);
+*/
+// ----------FISHER-Yates algorithm----------------
+/*
+const cards = ['A',2,3,4,5,6,7,8,9,10,'J','Q','K'];
+shuffle(cards);
+console.log(cards);
+
+function shuffle(array){
+  for(let i = array.length - 1; i > 0; i--){
+    const random = Math.floor(Math.random() * (i + 1));
+
+    [array[i], array[random]] = [array[random], array[i]];
+  }
+}
+*/
+//NEXT.49 Date objects = Objects that contain values that represent dates and times
+//                       These date objects can be changed and formatted
+/*
+//Date(year,month,day,hour,minute,second,ms)
+//const date = new Date(2024,0,1,2,3,4,5);   //Mon Jan 01 2024 02:03:04 GMT+0900 
+//const date = new Date("2024-01-02T12:00:00Z") //Tue Jan 02 2024 21:00:00 GMT+0900 (한국 표준시)
+//const date = new Date(0);  //Thu Jan 01 1970 09:00:00 GMT+0900 (
+//const date = new Date(1700000000000); 
+const date = new Date();
+const year = date.getFullYear();
+const month = date.getMonth();
+const day =date.getDate();
+const hour =date.getHours();
+const minutes = date.getMinutes();
+const seconds = date.getSeconds();
+const dayOfWeek = date.getDay();
+
+console.log(date,year,month,day,hour,minutes,seconds,dayOfWeek);   //2024 0 12 22 35 10 5
+
+date.setFullYear(2424);
+date.setMonth(0);
+date.setDate(1);
+date.setHours(2);
+date.setMinutes(3);
+date.setSeconds(4);      
+console.log(date);        //Mon Jan 01 2424 02:03:04 GMT+0900
+
+const date1 = new Date(2023-12-31);
+const date2 = new Date(2023-12-30);
+if(date2 > date1){
+  console.log("HAPPY NEW YERA!");
+}
+*/
+//NEXT.50 closure = A function defined inside of another function,
+//                  the inner function has access to the variables
+//                  and scope of the outer function.
+//                  Allow for private variables and state maintenance
+//                  used frequently in JS framewoks: React, Vue, Angular
+/*
+function outer(){
+    let message = "Hello";
+
+    function inner(){
+      console.log(message);      //scope            
+    }
+    inner();
+}
+message = "Goodbye";    //scope x
+outer();                       // Hello
+*/
+/*
+let count = 0;
+count = 10000;
+function increment(){
+  count++;
+  console.log(`Conut increased to ${count}`);
+}
+increment();
+increment();
+increment();
+increment();
+increment();
+*/
+/*
+function createCounter(){
+  let count = 0;
+
+  function increment(){
+    count++;
+    console.log(`Conut increased to ${count}`);
+  }
+  function getCount(){
+    return count;
+  }
+ // return {increment:increment};
+  return {increment,getCount};
+}
+
+const counter = createCounter();
+counter.increment();
+counter.increment();
+counter.increment();
+console.log(`The current count is ${counter.getCount()}`);
+
+function createGame(){
+  let score = 0;
+
+  function increaseScore(points){
+    score += points;
+    console.log(`+${points}pts`);
+  }
+
+  function decreaseScore(points){
+    score -= points;
+    console.log(`-${points}pts`);
+  }
+  function getScore(){
+    return score;
+  }
+  return {increaseScore,decreaseScore,getScore};
+}
+
+const game = createGame();
+
+game.increaseScore(5);
+game.increaseScore(5);
+game.increaseScore(5);
+game.decreaseScore(5);
+console.log(`The final score is ${game.getScore()}pts`);
+*/
+//.NEXT52. setTimeout() = funtion in JavaScript that allows you to schedule
+//                        the execution of a function after an amount of time (milliseconds)
+//                        Times are approximate (varies based on the workload of the JavaScript runtime env.)
+//                        setTimeout(callback,delay);
+// setTimeout(callback, delay);
+/*
+unction sayHello(){
+  window.alert("Hello");
+}
+setTimeout(sayHello, 3000);
+setTimeout(()=> window.alert("Hello"),5000)
+*/
+//claerTimeout(timeoutId) = can cancel a timeout before it triggers
+//const timeoutId = setTimeout(() => window.alert("Hello"),6000);
+//clearTimeout(timeoutId);
+/*
+let timeoutId;
+
+function startTimer(){
+  timeoutId = setTimeout(() =>window.alert("Hello"),3000);
+  console.log("STARTER");
+}
+function clearTimer(){
+  clearTimeout(timeoutId);
+  console.log("CLEARED");
+}
+*/
+//NEXT53. DIGITAL CLOCK PROGRAM
+
+function updateClock(){
+  const now = new Date();
+  let hours = now.getHours();
+  //const meridiem = hours > 12 ? PM : AM ;
+  hours = hours % 12 || 12;
+  hours = hours.toString();
+  const minutes = now.getMinutes().toString;
+  const seconds = now.getSeconds().toString;
+  document.getElementById("clock").textContent = `${hours}:${minutes}`;
+  //const timeString = `${hours}:${minutes}:${seconds} ${meridiem}`;
+ // document.getElementById("clock").textContent = "timeString";
+}
+
+updateClock();
+setInterval(updateClock,1000);
