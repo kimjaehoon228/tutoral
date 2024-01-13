@@ -1910,19 +1910,171 @@ function clearTimer(){
 }
 */
 //NEXT53. DIGITAL CLOCK PROGRAM
-
+/*
 function updateClock(){
   const now = new Date();
   let hours = now.getHours();
-  //const meridiem = hours > 12 ? PM : AM ;
+  const meridiem = hours >= 12 ? "PM" : "AM" ;
   hours = hours % 12 || 12;
-  hours = hours.toString();
-  const minutes = now.getMinutes().toString;
-  const seconds = now.getSeconds().toString;
-  document.getElementById("clock").textContent = `${hours}:${minutes}`;
-  //const timeString = `${hours}:${minutes}:${seconds} ${meridiem}`;
- // document.getElementById("clock").textContent = "timeString";
+  hours = hours.toString().padStart(2, 0);
+  const minutes = now.getMinutes().toString().padStart(2, 0);
+  const seconds = now.getSeconds().toString().padStart(2, 0);
+  const timeString = `${hours}:${minutes}:${seconds} ${meridiem}`;
+  document.getElementById("clock").textContent = timeString;
 }
 
 updateClock();
 setInterval(updateClock,1000);
+*/
+//NEXT54. Stopwatch program
+/*
+const display =document.getElementById("display");
+let timer = null;
+let startTime = 0;
+let elapsedTime = 0;
+let isRunning = false;
+
+function start(){
+  if(!isRunning){
+    startTime = Date.now() -  elapsedTime;
+    timer = setInterval(update, 10);
+    isRunning = true;
+  }
+}
+
+function stop(){
+  if(isRunning){
+    clearInterval(timer);
+    elapsedTime = Date.now() - startTime;
+    isRunning = false;
+    }
+  }
+
+  function reset(){
+    clearInterval(timer);
+    startTime = 0;
+    elapsedTime = 0;
+    isRunning = false;
+    display.textContent = "00:00:00:00";
+    
+  }
+  function update(){
+    const currentTime = Date.now();
+    elapsedTime = currentTime - startTime;
+
+    let hours = Math.floor(elapsedTime / (1000*60*60));
+    let minutes = Math.floor(elapsedTime / (1000 *60) % 60);
+    let seconds = Math.floor(elapsedTime / 1000 % 60);
+    let milliseconds = Math.floor(elapsedTime % 1000 / 10);
+
+    hours = String(hours).padStart(2,"0");
+    minutes = String(minutes).padStart(2,"0");
+    seconds = String(seconds).padStart(2,"0");
+    milliseconds = String(milliseconds).padStart(2,"0");
+
+    display.textContent = `${hours}:${minutes}:${seconds}:${milliseconds}`;
+  }
+  */
+//NEXT55. ES6 Module = an external file that contains reusalbe code
+//                     that can be imported into other JavaScript files.
+//                     Write resusable cod for many different apps.
+//                     Can contain variables, classes, function... and more
+//                     Introduced as part of ECMAScript 2015 update
+/*
+import {PI,getCircumference,getArea,getVolume} from './mathUtil.js';
+
+console.log(PI);
+const circumference = getCircumference(10);
+const area =getArea(10);
+const volume = getVolume(10);
+console.log(`${circumference.toFixed(2)}cm`);
+console.log(`${area.toFixed(2)}cm^2`);
+console.log(`${volume.toFixed(2)}cm^2`);
+*/
+//synchronous = Executes line by line consecutively in sequential manner
+//              code that waits for an operation to complete.
+
+//asynchronous = Allows multiple operations to be perfomed concurrently without waiting
+//              Doesn't block the executuon flow and allows the program to continue
+//              (I/O operations, network requets, fetching data)
+//              Handled wiht: Callbacks, Promises, Async/ Await
+/*
+//async
+setTimeout(() => console.log("Task 0"), 3000);
+console.log("Task 1");
+console.log("Task 2");
+console.log("Task 3"); establishing a connection
+//--------------------------- callback async =>sync
+function func1(callback){
+  setTimeout(() => {console.log("Task 0")
+                    callback()}, 3000);
+}
+function func2(){
+console.log("Task 1");
+console.log("Task 2");
+console.log("Task 3");
+}
+func1(func2);
+*/
+//NEXT. Error handing 
+// ERROR = An Object that is created to represent a problem that occurs
+//         Occur often with user input or establishing a connection
+// try {} = encloses code that might potentially cause an errorenter a dividend
+// catch {} = Catch and handle any thrown Errors from try{}
+// finally {}= (optional) Always executes.. used mostly for clean up
+//  ex. close files, close connections, release resources
+/*
+try{
+console.log(x);
+//NETWORK ERRORS
+//PROMISE REJECTION
+//SECURITY ERRORS
+}
+catch(error){
+  console.error(error);
+}
+finally{
+  //CLOSE FILES
+  //CLOSE CONNECTIONS
+  //RELEASE RESOURCES
+  console.log("This always executes");
+}
+console.log("You have reached the end!");
+*/
+/*
+try{
+const dividend = Number(window.prompt("Enter a dividend"));
+const divisor = Number(window.prompt("Enter a divisor"));
+
+if(divisor == 0){
+  throw new Error("You can't divide by zero!");
+}
+if(isNaN(dividend) || isNaN(divisor)){
+  throw new Error("Values must be a number");
+}
+
+const result = dividend / divisor;
+console.log(result);
+}
+catch(error){
+  console.error(error);
+}
+console.log("You have reached the end!");
+*/
+//NEXT 58. Calculator program
+const display = document.getElementById("display");
+
+function appendToDisplay(input){
+  display.value += input;
+}
+function clearDisplay(){
+  display.value="";
+}
+function calculate(){
+  try{
+    display.value =eval(display.value);
+}
+catch(error){
+  display.value ="Error";
+ }
+}
