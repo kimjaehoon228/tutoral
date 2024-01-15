@@ -1,3 +1,69 @@
+/*--NEXT67. classList-->*/
+
+.myButtons{
+  font-size: 4rem;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+.enabled{
+  background-color: aqua;
+  color: white;
+}
+.hover{
+  box-shadow: 0 0 10px hsl(0, 0%, 0%, 0.2);
+  font-weight: bold;
+}
+.disabled{
+  background-color: aquamarine;
+  color: hsl(0, 0%, 50%);
+}
+  /*--NEXT66. 
+.myButtons{
+  font-size: 4rem;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  background-color: hsl(205,100%,60%);
+  color: white;
+}
+*/
+/*NEXT65. Hide/show HTML
+  font-size: 2rem;
+}
+*/
+/*NEXT64. Mouse events
+body{
+  margin: 0;
+}
+#myBox{
+  background-color: lightcyan;
+  width: 200px;
+  height: 200px;
+  font-size: 7.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+*/
+/*NEXT63. Mouse events
+#myBox{
+  background-color: lightgreen;
+  width: 300px;
+  height: 300px;
+  font-size: 4.5rem;
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+}
+#myButton{
+  font-size: 3rem;
+}
+*/
+/*NEXT58.Calculator program
 body{
   margin:0;
   display: flex;
@@ -52,6 +118,7 @@ button:active{
 .operator-btn:active{
   background-color: hsl(47, 94%, 71%);
 }
+*/
 /*NEXT54. Stopwatch program
 body{
   background-image: url(/images/clock.jpg);

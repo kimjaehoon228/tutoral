@@ -2062,6 +2062,7 @@ catch(error){
 console.log("You have reached the end!");
 */
 //NEXT 58. Calculator program
+/*
 const display = document.getElementById("display");
 
 function appendToDisplay(input){
@@ -2078,3 +2079,231 @@ catch(error){
   display.value ="Error";
  }
 }
+*/
+//NEXT63. Mouse events
+//eventListener = Listen for specific envets to create interactive web pages
+//                events: click,mouseover, mouseout
+//                .addEventListener(event, callback);
+
+//const myBox = document.getElementById("myBox");
+/*
+function changeColor(event){
+  console.log(event);
+  event.target.style.backgroundColor = "tomato";
+  event.target.textContent ="OUCH😎";
+}
+myBox.addEventListener("click", changeColor);
+*/
+//const myButton = document.getElementById("myButton");
+/*
+myBox.addEventListener("click", event => {
+  event.target.style.backgrounColor = "yellow";
+  event.target.textContent ="OUCH😜";
+  });
+  myBox.addEventListener("mouseover", event => {
+    event.target.style.backgrounColor = "tomato";
+    event.target.textContent ="Don't do it🤣"
+  })
+
+  myBox.addEventListener("mouseout", event => {
+    myBox.style.backgroundColor = "lightgreen";
+    myBox.textContent = "Click Me 😢"
+  });
+
+  myButton.addEventListener("click", event => {
+    myBox.style.backgrounColor = "yellow";
+    myBox.textContent ="OUCH😜";
+    });
+    myButton.addEventListener("mouseover", event => {
+      myBox.style.backgrounColor = "tomato";
+      myBox.textContent ="Don't do it🤣"
+    })
+  
+    myButton.addEventListener("mouseout", event => {
+      myBox.style.backgroundColor = "lightgreen";
+      myBox.textContent = "Click Me 😢"
+    });
+    */
+   //NEXT 64.KEY EVENTS
+// events: keydown,keyup
+//         document.addEventListener(event,callback);
+/*
+   document.addEventListener("keyup", event => {
+    console.log(`Key up: ${event.key}`);
+   });
+    document.addEventListener("keydown", event => {
+      console.log(`Key down: ${event.key}`);
+    });
+*/
+/*
+   const mybox = document.getElementById("myBox");
+ 
+   document.addEventListener("keydown", event => {
+    mybox.textContent ="😎";
+    mybox.style.backgroundColor = "tomato";
+  });
+  document.addEventListener("keyup", event => {
+    mybox.textContent ="😘";
+    mybox.style.backgroundColor ="lightblue";
+  });
+ 
+   const moveAmount = 10;
+    let x = 0;
+    let y = 0;
+    document.addEventListener("keydown", event => {
+  
+      if(event.key.startsWith("Arrow")){
+       event.preventDefault();
+        switch(event.key){
+        case "ArrowUp":
+          y -= moveAmount;
+          break;
+        case "ArrowDown":
+          y += moveAmount;
+          break;
+        case "ArrowLeft":
+          x -= moveAmount;
+          break;
+        case "ArrowRight":
+          x += moveAmount;
+          break;
+        }
+      }
+      mybox.style.top = `${y}px`;
+      mybox.style.left = `${x}px`;
+    });
+*/
+//*NEXT65. Hide/show HTML
+/*
+const myButton =document.getElementById("myButton");
+const myimg = document.getElementById("myimg");
+
+myButton.addEventListener("click", event => {
+
+  // if(myimg.style.display === "none"){
+  //   myimg.style.display = "block";
+  //   myButton.textContent ="Hide";
+  // }
+  // else{
+  // myimg.style.display ="none";
+  // myButton.textContent="Show";
+  // }
+ 
+  if(myimg.style.visibility === "hidden"){
+    myimg.style.visibility = "visible";
+    myButton.textContent ="Hide";
+  }
+  else{
+  myimg.style.visibility ="hidden";
+  myButton.textContent="Show";
+  }
+});
+*/
+//*NEXT66. NodeList = Static collection of HTML elemnets by (id, class, element)
+//                    can be created by using querySelectorALL()
+//                    Similar to an array,m but no (map, filler, reduce)
+//                    NodeList won't update to automatically reflect changes
+/*
+// ADD AN ELEMENT
+const newButton = document.createElement("button");
+let buttons = document.querySelectorAll(".myButtons");
+console.log(buttons);
+buttons.forEach(button => {
+  button.style.backgroundColor = "green";
+  button.textContent += "🤷‍♂️";
+  button.addEventListener("click",event => {
+    event.target.style.backgroundColor = "tomato";
+  });
+  button.addEventListener("mouseover",event => {
+    event.target.style.backgroundColor = "hsl(205,100%,40%)";
+  });
+  button.addEventListener("mouseout",event => {
+    event.target.style.backgroundColor = "hsl(205,100%,60%)";
+  });
+});
+
+newButton.textContent = "Button 5";
+newButton.classList = "myButtons";
+document.body.appendChild(newButton);
+buttons = document.querySelectorAll(".myButtons");
+console.log(buttons);
+
+buttons.forEach(button =>{
+  button.addEventListener("click", event => {
+    event.target.remove();
+    console.log(buttons);
+    buttons = document.querySelectorAll(".myButtons");
+    console.log(buttons);
+  });
+});
+*/
+//NEXT67. classList = Element property in JavaScript used interact
+//                    with an element's list of classes (CSS classes)
+//                    Allows you to make reusable classes for many elements
+//                    across your webpage.
+//add()
+//remove()
+//toggle(Remove if present, Add if not)
+//contains()
+
+// const myH1 = document.getElementById("myH1");
+// const myButton = document.getElementById("myButton");
+// //myButton.classList.add("enabled");
+// //myButton.classList.remove("enabled");
+// //console.log(myButton);
+// // myButton.addEventListener("mouseover", event => {
+// //   event.target.classList.add("hover");
+// // });
+// // myButton.addEventListener("mouseout", event => {
+// //   event.target.classList.remove("hover");
+// // });
+// myH1.classList.add("enabled");
+//  myButton.classList.add("enabled");
+// // myButton.addEventListener("click",event =>{
+// //   event.target.classList.replace("enabled","disabled");
+// // });
+// myH1.addEventListener("click",event =>{
+//   if(event.target.classList.contains("disabled")){
+//     event.target.textContent += "🐱‍🚀";
+//   }
+//   else{
+//     event.target.classList.replace("enabled","disabled");
+//   }
+// });
+// myButton.addEventListener("click",event =>{
+//   if(event.target.classList.contains("disabled")){
+//     event.target.textContent += "🐱‍🚀";
+//   }
+//   else{
+//     event.target.classList.replace("enabled","disabled");
+//   }
+// });
+/*
+let buttons = document.querySelectorAll(".myButtons");
+buttons.forEach(button => {
+  button.classList.add("enabled");
+});
+
+buttons.forEach(button =>{
+  button.addEventListener("mouseover", event => {
+    event.target.classList.toggle("hover");
+  });
+});
+
+  buttons.forEach(button =>{
+  button.addEventListener("mouseout", event => {
+    event.target.classList.toggle("hover");
+  });
+});
+
+buttons.forEach(button => {
+  button.addEventListener("click", event => {
+    if(event.target.classList.contains("disabled")){
+      event.target.textContent += "💋";
+    }
+    else{
+    event.target.classList.replace("enabled","disabled");
+   }
+  });
+});
+*/
