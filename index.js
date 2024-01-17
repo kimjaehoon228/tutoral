@@ -2307,3 +2307,302 @@ buttons.forEach(button => {
   });
 });
 */
+//NEXT68. Rock Paper Scissors
+/*
+const choices = ["rock","paper","scissors"];
+const playerDisplay =document.getElementById("playerDisplay");
+const computerDisplay =document.getElementById("computerDisplay");
+const resultDisplay =document.getElementById("resultDisplay");
+const playerScoreDisplay =document.getElementById("playerScoreDisplay");
+const computerScoreDisplay = document.getElementById("computerScoreDisplay");
+const tieScoreDisplay =document.getElementById("tieScoreDisplay");
+
+let playerScore = 0;
+let computerscore = 0;
+let tieScore = 0;
+
+function playGame(playerChoice){
+  const computerChoice = choices[Math.floor(Math.random() * 3)];
+  console.log(computerChoice);
+  let result ="";
+  if(playerChoice === computerChoice){
+    result ="IT's A TIE!";
+    resultDisplay.classList.add("blueText");
+    tieScore++;
+    tieScoreDisplay.textContent = tieScore;
+  }
+  else{
+    switch(playerChoice){
+      case "rock":
+        result = (computerChoice === "scissors") ? "YOU WIN!" : "YOU LOSE";
+        break;
+      case "paper" :
+        result = (computerChoice === "rock") ? "YOU WIN!" : "YOU LOSE";
+      case "scissors" :
+        result = (computerChoice === "paper") ? "YOU WIN!" : "YOU LOSE";
+      }
+    }
+
+    playerDisplay.textContent = `PLAYER: ${playerChoice}`;
+    computerDisplay.textContent =`Computer:${computerChoice}`;
+    resultDisplay.textContent = result;
+
+    switch(result){
+      case "YOU WIN!":
+        playerScore++;
+        playerScoreDisplay.textContent = playerScore;
+        resultDisplay.classList.remove("blueText");
+        resultDisplay.classList.remove("redText");
+        resultDisplay.classList.add("greenText");
+      break;
+      case "YOU LOSE":
+        computerscore++;
+        computerScoreDisplay.textContent = computerscore;
+        resultDisplay.classList.remove("blueText");
+        resultDisplay.classList.remove("greenText");
+        resultDisplay.classList.add("redText");
+      break;
+    }
+  }
+  */
+ //NEXT 69.IMAGE SLIDER
+/*
+ const slides =document.querySelectorAll(".slides img");
+ let slideIndex = 0;
+ let intervalId = null;
+
+ //initializeSider();
+ document.addEventListener("DOMContentLoaded", initializeSider);
+ function initializeSider(){
+  if(slides.length > 0){
+    slides[slideIndex].classList.add("displaySlide");
+    intervalId = setInterval(nextslide,5000);
+  }
+ }
+ function showSlide(index){
+    if(index >= slides.length){
+      slideIndex = 0;
+    }
+    else if(index < 0){
+      slideIndex = slides.length -1;
+    }
+
+  slides.forEach(slide => {
+    slide.classList.remove("displaySlide")
+  });
+  slides[slideIndex].classList.add("displaySlide");
+ }
+
+ function prevslide(){
+  clearInterval(intervalId);
+  slideIndex--;
+  showSlide(slideIndex);
+ }
+ function nextslide(){
+  slideIndex++;
+  showSlide(slideIndex);
+ }
+*/
+//NEXT70.Callback Hell?
+//       =Situation in JavaScript where callbacks
+//       are nested within other callbacks to the
+//       degree where the code is difficult to read.
+//       Old pattern to handle asynchronous functions.
+//       Use Promises + asyne/await to avoid Callback Hell
+/*
+function task1(callback){
+  setTimeout(() => {
+    console.log("Task 1 complete");
+    callback();
+  }, 2000);
+}
+function task2(callback){
+  setTimeout(()=>{
+  console.log("Task 2 complete");
+  callback();
+  }, 1500);
+}
+function task3(callback){
+  setTimeout(()=>{
+  console.log("Task 3 complete");
+  callback();
+}, 3000);
+}
+function task4(callback){
+  setTimeout(()=>{
+  console.log("Task 4 complete");
+  callback();
+}, 1500);
+}
+task1(()=>{
+  task2(()=>{
+    task3(()=>{
+      task4(()=>{
+        console.log("ALL TASKS COMPLETE");
+      });
+    });
+  });
+});
+*/
+//NEXT71.Promise = an Object that manages asynchronous operations.
+//                 Wrap a Promise Object around {asynchronous code}
+//                 "I promise to return a value"
+//                 PENDING -> RESOLVED or REJECTED
+//                 new Promise((resolve, reject) => {asynchronous code})
+// DO THESE CHORES IN ORDER
+// 1. WALK THE DOG
+// 2. CLEAND THE KITHEN
+// 3. TAKE OUT THE TRASH
+/*
+function walkDog(){
+  // setTimeout(()=>{
+  //   console.log("You walk the dog 🐶");
+  //   callback();
+// }, 1500);
+  return new Promise((resolve,reject)=>{
+     setTimeout(()=>{
+      const dogwalked = true;
+
+      if(dogwalked){
+        resolve("You walk the dog 🐶");
+      }
+      else{
+        reject("You DIDN'T walk the dog ")
+      }
+   }, 1500);
+ })
+}
+
+function cleanKitchen(){
+  // setTimeout(()=>{
+  //   console.log("You clean the Kitchen 🕷");
+  //   callback();
+  // }, 2500);
+  return new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+      const KitchenClean = false;
+      if(KitchenClean){
+        resolve("You clean the Kitchen 🕷")
+      }
+      else{
+        reject("You DIDN'T clean the Kitchen")
+      }
+    },2500);
+  })
+}
+function takeOutTrash(){
+  // setTimeout(()=>{
+  //   console.log("You walk the trash 💩");
+  //   callback();
+  // }, 500);
+  return new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      const takeoutrash = true;
+      if(takeoutrash){
+        resolve("You walk the trash 💩")
+      }
+      else{
+        reject("You DIDN'T walk the trash")
+      }
+    }, 500);
+  })
+}
+/*
+// walkDog(() => {
+//   cleanKitchen(()=>{
+//     takeOutTrash(()=>
+//       console.log("You finished all the chores!"));
+//   });
+// });
+/*
+walkDog().then(value => {console.log(value);return cleanKitchen()})
+          .then(value => {console.log(value);return takeOutTrash()})
+          .then(value => {console.log(value);console.log("You finished all the chores!")})
+          .catch(error => console.log(error));
+          */
+//NEXT72.Async/Await = Async = makes a function return a promise
+//                     Await = makes an async function wait for a promise
+//                     Allows you write asynchronous code in a synchronous manner
+//                     async doesn't have resolve or reject parameters
+//                     Everyhing after Await is placed in an event queue
+/*
+async function doChores(){
+  try{
+  const walkDogResult = await walkDog();
+  console.log(walkDogResult);
+
+  const cleanKitchenResult = await cleanKitchen();
+  console.log(cleanKitchenResult);
+
+  const takeOutTrashResult = await takeOutTrash();
+  console.log(takeOutTrashResult);
+
+  console.log("You finished all the chores!");
+  }
+  catch(error){
+    console.log(error);
+  }
+}
+doChores()
+*/
+
+// JSON = (JaveScript Object Notation) data - interchange format
+//        Used for exchanging data between a serber and a web application
+//        JSON files {key:value} OR [value1,value2, value3]
+
+//        JSON.stringfy() = converts a JS object to a JSON string.
+//        JSON.parse() = converts a JSON string to a JS object
+/*
+const names = ["Spongebob","Paterick","Squidward","Sandy"];
+const preson ={
+                "name":"Spongebob",
+                "age" : 30,
+                "isEmproyed": true,
+                "hobbies":["jellyfishing","Karate","Cooking"]
+              }
+const people = [{"name":"Spongebob","age":30,"isEmproyed": true},
+                {"name":"Patrick","age" : 34,"isEmproyed": false},
+                {"name":"Squidward","age" : 50,"isEmproyed": true},
+                {"name":"Sandy","age" : 27,"isEmproyed": false}];
+const jsonString = JSON.stringify(names);
+const jsonString1 = JSON.stringify(preson);
+const jsonString2 = JSON.stringify(people);
+console.log(names);
+console.log(jsonString);
+console.log(preson);
+console.log(jsonString1);
+console.log(people);
+console.log(jsonString2);
+
+
+const jsonNames = `["Spongebob","Paterick","Squidward","Sandy"]`;
+const jsonPreson =`{
+                "name":"Spongebob",
+                "age" : 30,
+                "isEmproyed": true,
+                "hobbies":["jellyfishing","Karate","Cooking"]
+              }`;
+const jsonPeople = `[{"name":"Spongebob","age":30,"isEmproyed": true},
+                {"name":"Patrick","age" : 34,"isEmproyed": false},
+                {"name":"Squidward","age" : 50,"isEmproyed": true},
+                {"name":"Sandy","age" : 27,"isEmproyed": false}]`;
+const parsedData = JSON.parse(jsonNames);
+console.log(parsedData);
+const parsedData1 = JSON.parse(jsonPreson);
+console.log(parsedData1);
+const parsedData2 = JSON.parse(jsonPeople);
+console.log(parsedData2);
+
+fetch("./data/person.json")
+    .then(response => response.json())
+    .then(value => console.log(value));
+
+fetch("./data/people.json")
+.then(response => response.json())
+.then(values =>values.forEach(value => console.log(value.name,value.age,value.isEmproyed)))
+.catch(error => console.error());
+
+fetch("./data/names.json")
+.then(response => response.json())
+.then(value => console.log(value));
+*/
